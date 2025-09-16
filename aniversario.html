@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Feliz Aniversário, minha pequena!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      color: #333;
+      overflow-x: hidden;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+      color: #d63384;
+      margin-top: 40px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      flex: 1;
+    }
+
+    .message {
+      font-size: 1.3em;
+      margin: 40px 0;
+      line-height: 1.6;
+      color: #5a2a52;
+    }
+
+    .gallery {
+      margin: 40px 0;
+    }
+
+    .gallery h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #b30059;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 15px;
+    }
+
+    .masonry img {
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      display: block;
+    }
+
+    .masonry img:hover {
+      transform: scale(1.05);
+    }
+
+    .video-section {
+      margin: 40px 0;
+    }
+
+    iframe, video {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(219, 27, 99, 0.5);
+    }
+
+    .button {
+      background-color: #d63384;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+      margin-top: 30px;
+      min-width: 180px;
+    }
+
+    .button:hover {
+      background-color: #b30059;
+    }
+
+    #surprise {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.3em;
+      color: #b30059;
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall 10s linear infinite;
+      color: pink;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Ajustes para telas pequenas (celulares) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.2em;
+      }
+
+      .message {
+        font-size: 1.1em;
+        margin: 30px 0;
+      }
+
+      .masonry {
+        column-count: 1;
+      }
+
+      .button {
+        font-size: 1.5em; /* fonte maior */
+        padding: 25px 0;   /* botão mais alto */
+        min-width: 95vw;   /* ocupa quase toda largura da tela */
+        max-width: none;   /* remove limite máximo para aproveitar espaço */
+        margin: 30px auto 0;
+        display: block;
+        border-radius: 30px;
+      }
+
+      .video-section iframe,
+      .video-section video {
+        width: 90vw;
+        max-width: 360px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+      }
+    }
+
+    /* Modal para ampliar imagem */
+    #modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    #modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(255, 192, 203, 0.9);
+      cursor: default;
+    }
+
+    #modal .close-btn {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 2.5em;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+    }
+
+    /* Rodapé */
+    footer {
+      margin-top: 40px;
+      padding: 10px 0;
+      color: #b30059;
+      font-style: italic;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Feliz Aniversário, minha pequena! 💖</h1>
+
+  <div class="container">
+    <div class="message">
+  Hoje é um dia muito especial, pois celebramos o nascimento da pessoa mais incrível e maravilhosa que eu já conheci: VOCÊ, minha princesinha! 💖<br /><br />
+  Desde que você chegou, minha vida se encheu de luz, alegria e amor sem fim. Cada sorriso seu ilumina meu coração e me faz acreditar que o mundo é um lugar melhor, cada olhar seu faz meu coração acelerar, como se fosse a primeira vez.<br /><br />
+  Você é a razão dos meus melhores momentos, a inspiração que me motiva a ser uma pessoa melhor a cada dia. Quero que saiba que estarei sempre ao seu lado, para apoiar, proteger e celebrar cada conquista sua.<br /><br />
+  Que esse novo ano da sua vida seja repleto de felicidade, saúde, sonhos realizados e momentos inesquecíveis. Você merece tudo de mais lindo que o mundo pode oferecer meu amor.<br /><br />
+  Eu te amo profundamente e para sempre, do fundo do meu coração. O aniversário é seu mais eu que ganhei o presente ksksksks. Obrigado por sempre estar do meu lado moh.<br /><br />
+  Feliz aniversário, minha pequena! 💖
+</div>
+
+
+    <div class="gallery">
+      <h2>Nossas lembranças 📸</h2>
+      <div class="masonry">
+        <img src="https://i.postimg.cc/j2vBv5nz/Whats-App-Image-2025-09-16-at-7-34-40-AM.jpg" alt="Foto 1" />
+        <img src="https://i.postimg.cc/0QkfnCYB/Whats-App-Image-2025-09-16-at-7-34-41-AM.jpg" alt="Foto 2" />
+        <img src="https://i.postimg.cc/vHBKbG6N/Whats-App-Image-2025-09-16-at-7-34-41-AM-1.jpg" alt="Foto 3" />
+        <img src="https://i.postimg.cc/W4H53sjX/Whats-App-Image-2025-09-16-at-11-08-23-AM.jpg" alt="Foto 4" />
+        <img src="https://i.postimg.cc/L5b78T4D/Whats-App-Image-2025-09-16-at-10-54-13-AM-2.jpg" alt="Foto 5" />
+        <img src="https://i.postimg.cc/NjTVQm38/Whats-App-Image-2025-09-16-at-10-54-18-AM.jpg" alt="Foto 6" />
+        <img src="https://i.postimg.cc/L5tRJ4HB/Whats-App-Image-2025-09-16-at-10-54-18-AM-1.jpg" alt="Foto 7" />
+        <img src="https://i.postimg.cc/YSG542RG/Whats-App-Image-2025-09-16-at-10-54-19-AM-1.jpg" alt="Foto 8" />
+        <img src="https://i.postimg.cc/K84r7Lk0/Whats-App-Image-2025-09-16-at-10-54-19-AM.jpg" alt="Foto 9" />
+        <img src="https://i.postimg.cc/qBYCch3K/Whats-App-Image-2025-09-16-at-10-54-13-AM-1.jpg" alt="Foto 10" />
+        <img src="https://i.postimg.cc/XJBq9kyq/Whats-App-Image-2025-09-16-at-10-54-13-AM-3.jpg" alt="Foto 11" />
+      </div>
+    </div>
+
+    <div class="video-section">
+      <h2>Vídeo Especial só para Você 💖</h2>
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/8A5JMePxLNs?autoplay=0&mute=0"
+        title="Vídeo da Maria Antonia"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <button class="button" onclick="mostrarSurpresa()">Clique para uma surpresa 💌</button>
+    <div id="surprise" style="display:none; margin-top: 20px; font-size: 1.3em; color: #b30059; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+  <p>Você é o meu sonho mais lindo e mais precioso realizado. Desde o momento em que você entrou na minha vida, tudo ganhou um novo sentido, uma luz diferente que ilumina até os dias mais nublados.</p>
+
+  <p>Cada instante ao seu lado é um presente que guardo com todo o amor no fundo do meu coração. É como se cada segundo contigo fosse uma melodia suave que embala minha alma e faz o meu mundo girar no ritmo do seu sorriso.</p>
+
+  <p>Quando penso em você, sinto uma alegria imensa e uma gratidão que não cabe em palavras. Você é a razão da minha vida e dos meus melhores dias, a inspiração que me move e que me acalma nos dias mais difíceis.</p>
+
+  <p>Quero estar contigo em cada passo dessa jornada, celebrando suas vitórias, sorrindo junto às suas conquistas e oferecendo meu colo nas horas difíceis. Quero ser seu porto seguro, o abraço quente que acolhe seus medos e transforma suas dores em alegria.</p>
+
+  <p>Você tem uma luz tão especial, uma força tão linda, que contagia tudo e todos ao seu redor. É impressionante como a sua ternura pode mudar o mundo, fazendo dele um lugar melhor, simplesmente por existir.</p>
+
+  <p>Nosso amor é uma flor rara que desabrocha a cada dia, mesmo nas adversidades, mostrando que juntos podemos superar tudo. Quero que essa flor cresça forte e cheia de vida, repleta de cores vibrantes e aromas doces, assim como o sentimento que tenho por você, minha piquetucha.</p>
+
+  <p>Desejo que nossa história seja escrita com os mais belos momentos, recheada de risadas espontâneas, aventuras inesquecíveis e memórias que a gente vai guardar para sempre dentro do peito. Que sejamos parceiros de vida e eternos amantes das pequenas coisas.</p>
+
+  <p>Obrigado por existir, por ser essa pessoa maravilhosa que traz paz, felicidade e amor para o meu mundo. Você é a minha motivação diária, o meu sorriso constante e o melhor que a vida poderia me dar.</p>
+
+  <p>Que todos os seus sonhos se realizem, e que eu tenha o privilégio de estar ao seu lado para celebrar cada conquista, cada passo, cada novo horizonte que se abrir para você.</p>
+
+  <p>Eu te amo mais do que qualquer palavra pode expressar, hoje, amanhã e para sempre. Meu coração é todo seu, agradeço a Deus todos os dias que coloco minha cabeça no travesseiro, e me pergunto oq que eu fiz para merecer tanto assim ksksks.💘</p>
+
+  <p>Você é perfeita meu amor, espero que um dia quando a gente tiver conquistado nossas coisas, a gente olha pra trás e lembra de todos os momentos que nós tivemos. Não vejo a hora de construirmos uma família para nossos filhos verem a mãe maravilhosa que eles vão ter.</p>
+  
+  <p>Então leia e releia esse recado sempre que quiser, pois ele é um pedaço do que sinto e o que jamais vou deixar de sentir: um amor imenso, sem limites, que cresce a cada dia, e que nunca vai acabar.</p>
+</div>
+
+  </div>
+
+  <!-- Modal de imagem -->
+  <div id="modal" onclick="fecharModal(event)">
+    <span class="close-btn" onclick="fecharModal(event)">&times;</span>
+    <img id="modal-img" src="" alt="Imagem Ampliada" />
+  </div>
+
+  <!-- Corações -->
+  <script>
+    function criarCoracoes() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.innerText = '💗';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(criarCoracoes, 300);
+
+    function mostrarSurpresa() {
+      document.getElementById('surprise').style.display = 'block';
+    }
+
+    // Modal para ampliar imagem
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    document.querySelectorAll('.masonry img').forEach((img) => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function fecharModal(event) {
+      if (
+        event.target === modal ||
+        event.target.classList.contains('close-btn')
+      ) {
+        modal.style.display = 'none';
+        modalImg.src = '';
+        modalImg.alt = '';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
+
+  <footer>
+    Feito com amor por seu engraçadinho ❤️
+  </footer>
+</body>
+</html>
